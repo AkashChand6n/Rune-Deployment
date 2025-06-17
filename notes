@@ -1,0 +1,61 @@
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
+source ~/.bashrc
+nvm install 20
+nvm use 20
+nvm alias default 20
+npm install
+npm audit fix
+
+
+source venv/bin/activate
+pip install -r requirements.txt
+
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install pymysql
+
+
+export GOOGLE_API_KEY="your_actual_key"
+
+
+# In frontend folder
+npm run dev -- --host
+
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql
+pip install pymysql
+sudo mysql
+CREATE DATABASE rune_db;
+CREATE USER 'rune_user'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON rune_db.* TO 'rune_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+.env
+------
+MYSQL_USER=rune_user
+MYSQL_PASSWORD=password
+MYSQL_DB=rune_db
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+
+export MYSQL_USER=your_user
+export MYSQL_PASSWORD=your_password
+export MYSQL_DB=your_db
+export MYSQL_HOST=your_host
+export MYSQL_PORT=3306
+
+mysql -u rune_user -p -h localhost -P 3306
+USE rune_db;
+SHOW TABLES;
+DESCRIBE users;
+SELECT * FROM users;
+
+
+
