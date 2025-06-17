@@ -8,11 +8,12 @@ from src.routes.upload import upload_router
 from src.routes.chat import chat_router
 from src.routes.mcq import mcq_router
 from src.routes.flash import flashcard_router
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:5173"])
 
 models.Base.metadata.create_all(bind=engine)
 

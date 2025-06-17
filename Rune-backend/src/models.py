@@ -19,10 +19,10 @@ def generate_uuid():
 class User(Base):
     __tablename__ = "users"
 
-    user_id = Column(String, primary_key=True, default=generate_uuid)
-    name = Column(String)  # Added name field
-    email = Column(String, unique=True, index=True)
-    password_hash = Column(String)
+    user_id = Column(String(36), primary_key=True, default=generate_uuid)
+    name = Column(String(100))
+    email = Column(String(255), unique=True, index=True)
+    password_hash = Column(String(255))
     created_at = Column(DateTime, default=datetime.utcnow)
     last_login = Column(DateTime, nullable=True)
 
@@ -31,23 +31,22 @@ class User(Base):
 class Chat(Base):
     __tablename__ = "chats"
 
-    chat_id = Column(String, primary_key=True, default=generate_uuid)
-    title = Column(String)
+    chat_id = Column(String(36), primary_key=True, default=generate_uuid)
+    title = Column(String(255))
     created_at = Column(DateTime, default=datetime.utcnow)
-    user_id = Column(String, ForeignKey("users.user_id"))
+    user_id = Column(String(36), ForeignKey("users.user_id"))
     bookmarked = Column(Boolean, default=False)
 
     user = relationship("User", back_populates="chats")
     messages = relationship("ChatMessage", back_populates="chat")
     files = relationship("File", back_populates="chat")
 
-
 class ChatMessage(Base):
     __tablename__ = "chat_messages"
 
-    message_id = Column(String, primary_key=True, default=generate_uuid)
-    chat_id = Column(String, ForeignKey("chats.chat_id"))
-    content = Column(String)
+    message_id = Column(String(36), primary_key=True, default=generate_uuid)
+    chat_id = Column(String(36), ForeignKey("chats.chat_id"))
+    content = Column(String(1000))
     is_bot = Column(Boolean, default=False)
     timestamp = Column(DateTime, default=datetime.utcnow)
 
@@ -56,13 +55,12 @@ class ChatMessage(Base):
 class File(Base):
     __tablename__ = "files"
 
-    file_id = Column(String, primary_key=True, default=generate_uuid)
-    chat_id = Column(String, ForeignKey("chats.chat_id"))
-    file_name = Column(String, nullable=False)
+    file_id = Column(String(36), primary_key=True, default=generate_uuid)
+    chat_id = Column(String(36), ForeignKey("chats.chat_id"))
+    file_name = Column(String(255), nullable=False)
     processed_at = Column(DateTime, nullable=True)
     file_type = Column(Enum(FileTypeEnum), nullable=False)
     status = Column(Enum(FileStatusEnum), default=FileStatusEnum.pending)
-    content = Column(String, nullable=True)
-
+    content = Column(String(5000), nullable=True)
 
     chat = relationship("Chat", back_populates="files")
