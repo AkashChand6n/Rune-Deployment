@@ -23,5 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
-
+.env
+app.db
+chroma_db/
+__pycache__
+knowlegde_base/
 
