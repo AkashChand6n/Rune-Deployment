@@ -46,7 +46,7 @@ class ChatMessage(Base):
 
     message_id = Column(String(36), primary_key=True, default=generate_uuid)
     chat_id = Column(String(36), ForeignKey("chats.chat_id"))
-    content = Column(String(1000))
+    content = Column(String(5000))
     is_bot = Column(Boolean, default=False)
     timestamp = Column(DateTime, default=datetime.utcnow)
 
@@ -61,6 +61,6 @@ class File(Base):
     processed_at = Column(DateTime, nullable=True)
     file_type = Column(Enum(FileTypeEnum), nullable=False)
     status = Column(Enum(FileStatusEnum), default=FileStatusEnum.pending)
-    content = Column(String(5000), nullable=True)
+    content = Column(String(10000), nullable=True)
 
     chat = relationship("Chat", back_populates="files")

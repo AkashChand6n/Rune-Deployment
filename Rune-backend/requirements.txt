@@ -1,3 +1,4 @@
+pymysql
 aiofiles==24.1.0
 aiohappyeyeballs==2.4.4
 aiohttp==3.11.11
@@ -122,7 +123,6 @@ pydantic-settings==2.7.1
 pydantic_core==2.27.2
 Pygments==2.19.1
 PyJWT==2.10.1
-PyMySQL==1.1.1
 pypdf==5.1.0
 PyPika==0.48.9
 pyproject_hooks==1.2.0

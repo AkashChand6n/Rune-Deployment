@@ -9,8 +9,14 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from dotenv import load_dotenv
-load_dotenv()
+
+
+
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.0-flash",
+    google_api_key=os.environ["GOOGLE_API_KEY"]
+)
+
 
 
 
@@ -52,10 +58,6 @@ def initialize_vectorstore():
         embedding_function=embeddings
     )
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
-    google_api_key=os.getenv("GOOGLE_API_KEY")
-)
 #llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 # llm = ChatOllama(model=Config.LLM_MODEL, temperature=0.7)
 
