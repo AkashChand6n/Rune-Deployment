@@ -1,4 +1,4 @@
-#!/home/ubuntu/rune-backend/venv/bin/python3
+#!/home/ubuntu/Rune-Deployment/Rune-backend/venv/bin/python3
 # -*- coding: utf-8 -*-
 
 import sys

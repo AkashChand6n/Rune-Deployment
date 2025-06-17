@@ -1,20 +1,22 @@
+import os
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain.chains import create_retrieval_chain
 from langchain_community.document_loaders import TextLoader
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from config import Config
-import os
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
 
-
+load_dotenv(dotenv_path="/home/ubuntu/Rune-Deployment/Rune-backend/.env")
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
-    google_api_key=os.environ["GOOGLE_API_KEY"]
+    model="gemini-pro",
+    google_api_key=os.getenv("GOOGLE_API_KEY")
 )
 
 
